@@ -1,5 +1,5 @@
 {
-	"homepage": "http://jafb727.github.io/HomeStyle",
+	"homepage": "https://jafb727.github.io/HomeStyle",
 	"name": "homestyle",
 	"version": "0.1.0",
 	"private": true,
@@ -17,7 +17,7 @@
 		"web-vitals": "^0.2.4"
 	},
 	"scripts": {
-          "pre-deploy":"npm run  build",
+          "predeploy":"npm run build",
           "deploy": "gh-pages -d build",
 		"start": "react-scripts start",
 		"build": "react-scripts build",

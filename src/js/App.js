@@ -75,12 +75,12 @@ class App extends React.Component {
 						<Switch>
 							<UserContext.Provider value={this.state}>
 								{/** Log in view */}
-								<Route exact path="/">
+								<Route exact path="/HomeStyle">
 									<LogIn />
 								</Route>
 
 								{/** Log up view */}
-								<Route path="/logup">
+								<Route path="/HomeStyle/logup">
 									<SignUp />
 								</Route>
 							</UserContext.Provider>
@@ -98,18 +98,18 @@ class App extends React.Component {
 						<Container name="main" key="main">
 							<Switch>
 								{/** Home view */}
-								<Route exact path="/">
+								<Route exact path="/HomeStyle">
 									{/*<Home />*/}
 									<Home />
 								</Route>
 
 								{/** Detail product view */}
-								<Route path={`/product/:id`}>
+								<Route path={`/HomeStyle/product/:id`}>
 									<Detail />
 								</Route>
 
 								{/** New item view */}
-								<Route path="/new">
+								<Route path="/HomeStyle/new">
 									<Edition />
 								</Route>
 							</Switch>

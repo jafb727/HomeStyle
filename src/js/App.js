@@ -24,6 +24,12 @@ import Ribbon from "./layout/Ribbon";
 
 // ----------------------------------------------------------------
 
+/**JSON data */
+import scheme from "../data/scheme.json";
+import data from "../data/data.json";
+
+// ----------------------------------------------------------------
+
 /** Main component */
 class App extends React.Component {
 	// Constructor
@@ -55,7 +61,7 @@ class App extends React.Component {
 	 */
 	onUserLogOut = (history) => {
 		// Routing to root using routing history
-		history.push("/");
+		history.push("/HomeStyle");
 
 		// Logging out using the onUserLogIn event
 		this.onUserLogIn(null);
@@ -105,7 +111,7 @@ class App extends React.Component {
 
 								{/** Detail product view */}
 								<Route path={`/HomeStyle/product/:id`}>
-									<Detail />
+									<Detail scheme={scheme} data={data} />
 								</Route>
 
 								{/** New item view */}

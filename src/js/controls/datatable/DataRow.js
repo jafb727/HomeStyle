@@ -96,7 +96,7 @@ class DataRow extends React.Component {
 	onEditingItem = (dataRowType) => {
 		this.setState({
 			dataRowtype: dataRowType,
-			isBeingEdited: "edit" ? true : false,
+			isBeingEdited: dataRowType === "edit" ? true : false,
 		});
 	};
 

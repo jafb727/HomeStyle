@@ -78,7 +78,7 @@ class Avatar extends React.Component {
 					<Container>
 						<strong>{this.context.currentUser.displayName}</strong>
 						<div>{this.context.currentUser.email}</div>
-						<Link to={`/account/${this.context.currentUser.id}`}>
+						<Link to={`/HomeStyle/account/${this.context.currentUser.id}`}>
 							View account
 						</Link>
 					</Container>

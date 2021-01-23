@@ -56,7 +56,7 @@ class DataChunk extends React.Component {
 					<Col className={bs4Width}>
 						<Link
 							className="btn-link"
-							to={`product/${this.props.itemId}`}
+							to={`/HomeStyle/product/${this.props.itemId}`}
 						>
 							{this.props.value}
 						</Link>

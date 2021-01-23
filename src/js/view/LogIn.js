@@ -60,11 +60,14 @@ class LogIn extends React.Component {
 	 */
 	logInExistentUser = (formState, onUserLogIn) => {
 		// Performs user credentials validation
-		let userChecked = users.filter(
-			(user) =>
-				user.username === formState.initialDataMap.username &&
-				user.password === formState.initialDataMap.password
-		);
+		let userChecked = users.filter((user) => {
+			if (
+				user.username === formState.dataMap.username &&
+				user.password === formState.dataMap.password
+			) {
+				return user;
+			} else return null;
+		});
 
 		// User checking
 		if (userChecked.length > 0) {
@@ -155,7 +158,7 @@ class LogIn extends React.Component {
 								}}
 							>
 								If you are new, please{" "}
-								<Link to="/logup">create an account</Link>
+								<Link to="/HomeStyle/logup">create an account</Link>
 							</p>
 						</Container>
 					</Container>

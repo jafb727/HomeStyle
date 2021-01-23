@@ -24,6 +24,28 @@ import DefaultImage from "../../img/default-image.svg";
 
 /** Main component */
 class FormField extends React.Component {
+	// Constructor
+	constructor(props) {
+		super(props);
+
+		// Component status
+		this.state = {
+			fieldValue: this.props.dataSource || "", // Current field value
+		};
+	}
+
+	// ----------------------------------------------------------------
+	/** Lifecycle methods */
+
+	// getDerivedStateFromProps
+	static getDerivedStateFromProps(nextProps, prevState) {
+		return {
+			fieldValue: nextProps.dataSource,
+		};
+	}
+
+	// ----------------------------------------------------------------
+
 	/**
 	 * forkBasedOnFormType function
 	 * Helps to decide which kind of field to create based on form type
@@ -126,11 +148,7 @@ class FormField extends React.Component {
 									className="form-control"
 									placeholder={formFieldSetUp.placeholder}
 									options={{ numeral: true }}
-									value={
-										this.props.dataSource
-											? this.props.dataSource[formFieldSetUp.name]
-											: ""
-									}
+									value={this.state.fieldValue}
 								/>
 								<Form.Control.Feedback type="invalid">
 									{/** Validation label message not displaying in table orientation*/}
@@ -166,11 +184,7 @@ class FormField extends React.Component {
 								type={formFieldSetUp.type}
 								placeholder={formFieldSetUp.placeholder}
 								className="fluid"
-								value={
-									this.props.dataSource
-										? this.props.dataSource[formFieldSetUp.name]
-										: ""
-								}
+								value={this.state.fieldValue}
 							/>
 							<Form.Control.Feedback type="invalid">
 								{/** Validation label message not displaying in table orientation*/}
@@ -211,14 +225,14 @@ class FormField extends React.Component {
 
 							{/** Field control */}
 							<div className="col-8 col-form-label">
-								<Star rating={this.props.dataSource[formFieldSetUp.name]} />
+								<Star rating={this.state.fieldValue} />
 							</div>
 						</Container>
 					);
 					break;
 
 				case "image":
-					let imageUrl = this.props.dataSource[formFieldSetUp.name];
+					let imageUrl = this.state.fieldValue;
 					imageUrl = imageUrl ? imageUrl : DefaultImage;
 
 					formFieldContent = (
@@ -238,8 +252,8 @@ class FormField extends React.Component {
 							{/** Field control */}
 							<div className="col-8 col-form-label">
 								{formFieldSetUp.viewDataChunkType === "currency"
-									? `$${this.props.dataSource[formFieldSetUp.name]}`
-									: this.props.dataSource[formFieldSetUp.name]}
+									? `$${this.state.fieldValue}`
+									: this.state.fieldValue}
 							</div>
 						</Container>
 					);

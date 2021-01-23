@@ -118,7 +118,7 @@ class Detail extends React.Component {
 										"imageUrl"
 									)}
 									formType="view"
-									dataSource={this.state.item}
+									dataSource={this.state.item["imageUrl"]}
 									forceDisplay={true}
 								/>
 							</Container>

@@ -67,16 +67,16 @@ class SignUp extends React.Component {
 	 */
 	onUserSignUp = (formState, onUserLogIn) => {
 		// Routing to root
-          this.props.history.push("/");
+          this.props.history.push("/HomeStyle");
           
           // Changing current user in the user context
 		onUserLogIn({
 			id: 3,
-			username: formState.initialDataMap.username,
-			password: formState.initialDataMap.password,
-			email: formState.initialDataMap.email,
+			username: formState.dataMap.username,
+			password: formState.dataMap.password,
+			email: formState.dataMap.email,
 			displayName: util.capitalizeFirstLetter(
-				formState.initialDataMap.username
+				formState.dataMap.username
 			),
 		});
 	};
@@ -148,7 +148,7 @@ class SignUp extends React.Component {
 									bottom: "1rem",
 								}}
 							>
-								Do you already have an account? <Link to="/">Log in</Link>
+								Do you already have an account? <Link to="/HomeStyle">Log in</Link>
 							</p>
 						</Container>
 					</Container>

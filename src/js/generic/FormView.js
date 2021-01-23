@@ -27,10 +27,7 @@ class FormView extends React.Component {
 		// Component state
 		this.state = {
 			formValidated: false, // Form validation flag
-			initialDataMap: util.mapDataForm(
-				this.props.scheme,
-				this.props.orientation
-			), // Fields to display in form
+			dataMap: util.mapDataForm(this.props.scheme, this.props.orientation), // Fields to display in form
 			inLineOrientation: this.props.inLineOrientation,
 			dataSource: this.props.dataSource,
 		};
@@ -47,15 +44,17 @@ class FormView extends React.Component {
 			forceDisplay: this.props.forceDisplay || null,
 		};
 
-		// Checking if form view display information from an existing item
-		if (this.props.type === "view" || this.props.type === "edit") {
-			options["dataSource"] = this.state.dataSource;
-		}
-
 		// ----------------------------------------------------------------
 
 		// Creating each field in form
 		return this.props.scheme.map((field, index) => {
+			// Checking if form view display information from an existing item
+			if (this.props.type === "view" || this.props.type === "edit") {
+				options["dataSource"] =
+					this.state.dataMap[field.name] ||
+					(this.state.dataSource ? this.state.dataSource[field.name] : "");
+			}
+
 			return (
 				<FormField
 					{...options}
@@ -101,8 +100,8 @@ class FormView extends React.Component {
 	 */
 	handleChange = (event) => {
 		this.setState((prevState) => ({
-			initialDataMap: {
-				...prevState.initialDataMap,
+			dataMap: {
+				...prevState.dataMap,
 				[event.target.name]: event.target.value,
 			},
 		}));

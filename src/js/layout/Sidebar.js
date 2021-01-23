@@ -87,7 +87,7 @@ class Sidebar extends React.Component {
 							itemSelectedId={this.state.itemSelectedId}
 						/>
 					</Link>*/}
-					<Link to="/" className="text-dark">
+					<Link to="/HomeStyle" className="text-dark">
 						<OptionMenu
 							id="Products"
 							optionText="Products"

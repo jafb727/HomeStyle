@@ -1,0 +1,29 @@
+/**
+ * Filename: _functions.scss
+ * Author: Jose A Felix
+ * Description: _functions stylesheet
+ */
+
+// ----------------------------------------------------------------
+// Functions
+// ----------------------------------------------------------------
+
+/**
+ * lightenColor function
+ * Lights up any color from the theme color palette used in BS4
+ * @param {keyword} property - a keyword representing a property in the BS4 $theme-colors map variable
+ */
+ @function lightenColor($property) {
+	$result: map-get($theme-colors, $property);
+	@return lighten($result, 20%);
+}
+
+/**
+ * darkenColor function
+ * Darks any color from the theme color palette used in BS4
+ * @param {keyword} - a keyword representing a property in the BS4 $theme-colors map variable
+ */
+@function darkenColor($property) {
+	$result: map-get($theme-colors, $property);
+	@return darken($result, 5%);
+}

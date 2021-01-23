@@ -1,0 +1,65 @@
+/**
+ * Filename: _sidebar.scss
+ * Author: Jose A Felix
+ * Description: _sidebar stylesheet
+ */
+
+/* ----------------------------------------------------------------
+     Sidebar
+--------------------------------------------------------------------*/
+
+/** Sidebar navigation */
+.sidebarNavSize {
+	max-width: 200px;
+	min-width: 10rem;
+}
+
+/** Sidebar navigation container */
+.sidebar-navigation-container {
+	border-right: 1px solid #eee;
+	box-shadow: 1px 3px 5px #efefef;
+
+	/** Navigation controls container */
+	.navigation-controls-container {
+		margin-bottom: 20px;
+		background-color: map-get($theme-colors, light);
+
+		&:hover {
+			@include hoverEffect();
+			background-color: darkenColor(light);
+		}
+	}
+
+	/** Menu container */
+	.menu-container {
+		a:hover {
+			text-decoration: none;
+		}
+
+		/** Menu item */
+		li {
+			font-weight: bold;
+		}
+
+		/** Menu item hover */
+		li:hover {
+			@include hoverEffect();
+			background-color: lightenColor(primary);
+			color: map-get($theme-colors, dark);
+		}
+
+		/** Menu item image */
+		li img {
+			max-width: $md-icon;
+			max-height: $md-icon;
+		}
+
+		/** Menu item selected */
+		li.item-selected {
+			border-right: 5px solid map-get($theme-colors, primary);
+			border-top: 1px solid darken(map-get($theme-colors, light), 5%);
+			border-bottom: 1px solid darken(map-get($theme-colors, light), 5%);
+			box-shadow: 0 1px 5px map-get($theme-colors, light);
+		}
+	}
+}

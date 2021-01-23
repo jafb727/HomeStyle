@@ -1,0 +1,77 @@
+/**
+ * Filename: _mixins.scss
+ * Author: Jose A Felix
+ * Description: _mixins stylesheet
+ */
+
+// ----------------------------------------------------------------
+// Mixins
+// ----------------------------------------------------------------
+
+/** 
+ * flexCentered fuction
+ * Helps to set a full centered flex content
+ */
+ @mixin flexCentered() {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+/** 
+ * absoluteCentered fuction
+ * Helps to set a full centered absolute content
+ */
+@mixin absoluteCentered() {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+/** 
+ * hoverEffect fuction
+ * Helps to set default hover effects to any element
+ */
+@mixin hoverEffect() {
+	cursor: pointer;
+}
+
+/**
+ * imageSize function
+ * Calculate imagen size
+ * @param {unit} - a valid css unit like: 20px
+ */
+@mixin imageSize($size) {
+	width: $size;
+	height: $size;
+}
+
+/**
+ * iconSize function
+ * Configures an icon properties
+ * @param {[value][unit]} - a pair value-unit like: 20px
+ */
+@mixin iconSize($size, $separation) {
+	width: $size;
+	height: $size;
+	margin: 0 $separation;
+}
+
+/**
+ * fluidItem function
+ * Sets an item to the 100% width
+ */
+@mixin fluidWidth() {
+	width: 100%!important;
+}
+
+/**
+ * fluidItem function
+ * Sets an item to the 100% height
+ */
+ @mixin fluidHeight() {
+	height: 100%;
+}

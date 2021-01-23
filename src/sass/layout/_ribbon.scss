@@ -1,0 +1,26 @@
+/**
+ * Filename: _ribbon.scss
+ * Author: Jose A Felix
+ * Description: _ribbon stylesheet
+ */
+
+/* ----------------------------------------------------------------
+     Ribbon
+--------------------------------------------------------------------*/
+
+/** Ribbon container */
+.ribbon-container {
+	background-color: map-get($theme-colors, primary);
+	padding: 0;
+}
+
+/** Ribbon icon */
+.ribbon-icon {
+	max-width: 5rem;
+	padding: 0 1.5rem;
+
+	&:hover {
+		@include hoverEffect();
+		background-color: darkenColor(primary);
+	}
+}

@@ -1,0 +1,68 @@
+[
+    {
+      "productId": 1,
+      "productName": "Leaf Rake",
+      "productCode": "GDN-0011",
+      "releaseDate": "March 19, 2016",
+      "description": "Leaf rake with 48-inch wooden handle.",
+      "price": 19.95,
+      "starRating": 3.2,
+      "imageUrl": "https://www.flaticon.com/svg/static/icons/svg/2826/2826235.svg",
+      "location": "Mexico"
+    },
+    {
+      "productId": 2,
+      "productName": "Garden Cart",
+      "productCode": "GDN-0023",
+      "releaseDate": "March 18, 2016",
+      "description": "15 gallon capacity rolling garden cart",
+      "price": 32.99,
+      "starRating": 4.2,
+      "imageUrl": "https://www.flaticon.com/svg/static/icons/svg/1192/1192490.svg",
+      "location": "USA"
+    },
+    {
+      "productId": 5,
+      "productName": "Hammer",
+      "productCode": "TBX-0048",
+      "releaseDate": "May 21, 2016",
+      "description": "Curved claw steel hammer",
+      "price": 8.9,
+      "starRating": 4.8,
+      "imageUrl": "https://www.flaticon.com/svg/static/icons/svg/588/588450.svg",
+      "location": "Mexico"
+    },
+    {
+      "productId": 8,
+      "productName": "Saw",
+      "productCode": "TBX-0022",
+      "releaseDate": "May 15, 2016",
+      "description": "15-inch steel blade hand saw",
+      "price": 11.55,
+      "starRating": 3.7,
+      "imageUrl": "https://www.flaticon.com/svg/static/icons/svg/2139/2139463.svg",
+      "location": "Canada"
+    },
+    {
+      "productId": 10,
+      "productName": "Video Game Controller",
+      "productCode": "GMG-0042",
+      "releaseDate": "October 15, 2015",
+      "description": "Standard two-button video game controller",
+      "price": 35.95,
+      "starRating": 4.6,
+      "imageUrl": "https://www.flaticon.com/svg/static/icons/svg/3211/3211274.svg",
+      "location": "Gambia"
+    },
+    {
+     "productId": 11,
+     "productName": "Crame small plant",
+     "productCode": "CRM-0223",
+     "releaseDate": "September 15, 2020",
+     "description": "Crame plant for exterior decorating",
+     "price": 45.81,
+     "starRating": 5,
+     "imageUrl": "https://www.flaticon.com/svg/static/icons/svg/3004/3004058.svg",
+     "location": "Malawi"
+   }    
+  ]

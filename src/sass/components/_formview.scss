@@ -1,0 +1,30 @@
+/**
+ * Filename: _formview.scss
+ * Author: Jose A Felix
+ * Description: _formview stylesheet
+ */
+
+/* ----------------------------------------------------------------
+     Form view
+--------------------------------------------------------------------*/
+
+/** Form title */
+.form-title {
+	margin-bottom: 3rem;
+}
+
+/** Form table */
+.form-inline {
+	> div {
+		display: flex;
+	}
+
+	.form-group {
+		padding: 0 0.2rem;
+	}
+
+	.form-group,
+	.form-group > div {
+		margin-bottom: 0;
+	}
+}

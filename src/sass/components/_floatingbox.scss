@@ -1,0 +1,32 @@
+/**
+ * Filename: _floatingbox.scss
+ * Author: Jose A Felix
+ * Description: _floatingbox stylesheet
+ */
+
+// ----------------------------------------------------------------
+// Floating box
+// ----------------------------------------------------------------
+
+/** Floating box popover */
+.floatingBox {
+	box-shadow: 2px 5px 10px #e0e0e0;
+	border-color: #ddd;
+	min-width: 20rem;
+}
+
+/** Popover arrow border color */
+.floatingBox .arrow::before {
+	border-bottom-color: #ddd;
+}
+
+/** Gray hover standard */
+.btnItemStandard {
+	@include fluidWidth();
+	text-align: left;
+}
+
+/** Gray hover standard hover effect */
+.btnItemStandard:hover {
+	background-color: map-get($theme-colors, light);
+}

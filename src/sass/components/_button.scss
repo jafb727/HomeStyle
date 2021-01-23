@@ -1,0 +1,20 @@
+/**
+ * Filename: _button.scss
+ * Author: Jose A Felix
+ * Description: _button stylesheet
+ */
+
+/* ----------------------------------------------------------------
+     Button
+--------------------------------------------------------------------*/
+
+/** Back button */
+.btn-back {
+	display: flex;
+	align-items: center;
+}
+
+/** Back button image */
+.btn-back img {
+	margin-right: $sm-separation;
+}

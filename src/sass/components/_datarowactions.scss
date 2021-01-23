@@ -1,0 +1,52 @@
+/**
+ * Filename: _datarowactions.scss
+ * Author: Jose A Felix
+ * Description: _datarowactions stylesheet
+ */
+
+/* ----------------------------------------------------------------
+     Data row actions
+--------------------------------------------------------------------*/
+
+.data-row-actions-container,
+.data-row-actions-background-container {
+	@include fluidHeight();
+	position: absolute;
+}
+
+/** Data row actions container */
+.data-row-actions-container {
+	z-index: 1;
+	display: flex;
+	justify-content: flex-end;
+
+	> div {
+		@include fluidHeight();
+		width: 3rem;
+		display: flex;
+		justify-content: center;
+		background-color: lightenColor(primary);
+	}
+
+	> div:hover {
+		@include hoverEffect();
+		background-color: map-get($theme-colors, primary);
+	}
+
+	> div img {
+		width: 30%;
+		filter: contrast(0.5);
+	}
+}
+
+/** Data row edit actions */
+.edit-actions {
+	height: 2.4rem;
+}
+
+/** Data row actions background container */
+.data-row-actions-background-container {
+	z-index: -1;
+	width: calc(100% - 0.5px);
+	background-color: #ffbc022f;
+}

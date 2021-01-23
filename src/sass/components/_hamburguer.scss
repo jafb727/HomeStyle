@@ -1,0 +1,63 @@
+/**
+ * Filename: _hamburguer.scss
+ * Author: Jose A Felix
+ * Description: _hamburguer stylesheet
+ */
+
+/* ----------------------------------------------------------------
+     Hamburguer
+--------------------------------------------------------------------*/
+
+/** Hamburguer */
+$first-line-width: 100%;
+$second-line-width: 50%;
+$third-line-width: 80%;
+
+/** Hamburguer container */
+.hamburguer-container {
+	justify-content: center;
+	height: 2rem;
+	width: 2rem;
+
+	&:hover {
+		@include hoverEffect();
+	}
+
+	/** Hamburguer menu lines */
+	span {
+		display: inline-block;
+		height: 0.2rem;
+		margin: 2px 0;
+		padding: 1px 0;
+		background-color: map-get($theme-colors, dark);
+		border-radius: $border-radius-sm;
+		transition: width 0.3s ease-in-out;
+	}
+
+	/** Hamburguer 1st line */
+	> span:nth-child(1) {
+		width: $first-line-width;
+
+		&:hover {
+			width: $first-line-width - 20;
+		}
+	}
+
+	/** Hamburguer 2nd line */
+	> span:nth-child(2) {
+		width: $second-line-width;
+
+		&:hover {
+			width: $second-line-width + 25;
+		}
+	}
+
+	/** Hamburguer 3rd line */
+	> span:nth-child(3) {
+		width: $third-line-width;
+
+		&:hover {
+			width: $third-line-width - 10;
+		}
+	}
+}

@@ -1,0 +1,71 @@
+/**
+ * Filename: _helpers.scss
+ * Author: Jose A Felix
+ * Description: _helpers stylesheet
+ */
+
+// ----------------------------------------------------------------
+// Class & placeholders helpers
+// ----------------------------------------------------------------
+
+/** HTML Lists */
+ul,
+ol {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+/** App main containers */
+#root,
+.main-container,
+.view-container {
+	min-height: 100vh;
+}
+
+/** Extra small image */
+.xsmall-image {
+	@include imageSize($xsm-image);
+}
+
+/** Small image */
+.small-image {
+	@include imageSize($sm-image);
+}
+
+/** Medium image */
+.medium-image {
+	@include imageSize($md-image);
+}
+
+/** Large image */
+.large-image {
+	@include imageSize($lg-image);
+}
+
+/** Small icons */
+.small-icon {
+	@include iconSize($sm-icon, $xsm-separation);
+}
+
+/** Required field */
+.required-field {
+	color: red;
+	margin-left: $xsm-separation;
+}
+
+/** Fluid makes 100% */
+.fluid {
+	@include fluidWidth();
+}
+
+/** Full centered element using flexbox */
+.flex-centered {
+	@include flexCentered();
+}
+
+/** Image in table */
+.imageDataChunk {
+	@include fluidWidth();
+	max-width: $micro-image;
+}

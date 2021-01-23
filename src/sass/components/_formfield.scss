@@ -1,0 +1,16 @@
+/**
+ * Filename: _formfield.scss
+ * Author: Jose A Felix
+ * Description: _formfield stylesheet
+ */
+
+/* ----------------------------------------------------------------
+     Form field
+--------------------------------------------------------------------*/
+
+/** Minimalistic field style */
+.minimalisticField {
+	border-style: none;
+	border-bottom: 1px solid map-get($theme-colors, primary);
+	border-radius: 0;
+}

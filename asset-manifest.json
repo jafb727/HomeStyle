@@ -1,0 +1,40 @@
+{
+  "files": {
+    "main.css": "/HomeStyle/static/css/main.d9432160.chunk.css",
+    "main.js": "/HomeStyle/static/js/main.a5bcab8f.chunk.js",
+    "main.js.map": "/HomeStyle/static/js/main.a5bcab8f.chunk.js.map",
+    "runtime-main.js": "/HomeStyle/static/js/runtime-main.9d4a2f82.js",
+    "runtime-main.js.map": "/HomeStyle/static/js/runtime-main.9d4a2f82.js.map",
+    "static/css/2.150d169a.chunk.css": "/HomeStyle/static/css/2.150d169a.chunk.css",
+    "static/js/2.a152408f.chunk.js": "/HomeStyle/static/js/2.a152408f.chunk.js",
+    "static/js/2.a152408f.chunk.js.map": "/HomeStyle/static/js/2.a152408f.chunk.js.map",
+    "static/js/3.b5703b83.chunk.js": "/HomeStyle/static/js/3.b5703b83.chunk.js",
+    "static/js/3.b5703b83.chunk.js.map": "/HomeStyle/static/js/3.b5703b83.chunk.js.map",
+    "index.html": "/HomeStyle/index.html",
+    "static/css/2.150d169a.chunk.css.map": "/HomeStyle/static/css/2.150d169a.chunk.css.map",
+    "static/css/main.d9432160.chunk.css.map": "/HomeStyle/static/css/main.d9432160.chunk.css.map",
+    "static/js/2.a152408f.chunk.js.LICENSE.txt": "/HomeStyle/static/js/2.a152408f.chunk.js.LICENSE.txt",
+    "static/media/avatar.3ead7426.svg": "/HomeStyle/static/media/avatar.3ead7426.svg",
+    "static/media/cancel.07d98d42.svg": "/HomeStyle/static/media/cancel.07d98d42.svg",
+    "static/media/chain-saw.fd408eeb.svg": "/HomeStyle/static/media/chain-saw.fd408eeb.svg",
+    "static/media/default-image.ed9cf5e9.svg": "/HomeStyle/static/media/default-image.ed9cf5e9.svg",
+    "static/media/delete.134b8d0b.svg": "/HomeStyle/static/media/delete.134b8d0b.svg",
+    "static/media/edit.2ac10a33.svg": "/HomeStyle/static/media/edit.2ac10a33.svg",
+    "static/media/exit.d2f2f53a.svg": "/HomeStyle/static/media/exit.d2f2f53a.svg",
+    "static/media/hammer.91b518c2.svg": "/HomeStyle/static/media/hammer.91b518c2.svg",
+    "static/media/help.6ae7d385.svg": "/HomeStyle/static/media/help.6ae7d385.svg",
+    "static/media/left-arrow.f5db684a.svg": "/HomeStyle/static/media/left-arrow.f5db684a.svg",
+    "static/media/main.css": "/HomeStyle/static/media/signup.e1fc84d6.jpg",
+    "static/media/market.bf0824d0.svg": "/HomeStyle/static/media/market.bf0824d0.svg",
+    "static/media/save.e33a18b7.svg": "/HomeStyle/static/media/save.e33a18b7.svg",
+    "static/media/shopping-cart.165d1e80.svg": "/HomeStyle/static/media/shopping-cart.165d1e80.svg",
+    "static/media/star.60110675.svg": "/HomeStyle/static/media/star.60110675.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.9d4a2f82.js",
+    "static/css/2.150d169a.chunk.css",
+    "static/js/2.a152408f.chunk.js",
+    "static/css/main.d9432160.chunk.css",
+    "static/js/main.a5bcab8f.chunk.js"
+  ]
+}

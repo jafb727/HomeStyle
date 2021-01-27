@@ -51,9 +51,9 @@ class DataRow extends React.Component {
 	 * toggleActions function
 	 * Helps to handle the item actions display
 	 */
-	toggleActions = (event) => {
+	toggleActions = (state) => {
 		this.setState({
-			displayActions: !this.state.displayActions,
+			displayActions: state,
 		});
 	};
 
@@ -135,8 +135,8 @@ class DataRow extends React.Component {
 				dataRowContent = (
 					<Row
 						className={rowClass}
-						onMouseEnter={(event) => this.toggleActions(event)}
-						onMouseLeave={(event) => this.toggleActions(event)}
+						onMouseEnter={(event) => this.toggleActions(true)}
+						onMouseLeave={(event) => this.toggleActions(false)}
 					>
 						<FormView
 							type="new"
@@ -158,8 +158,8 @@ class DataRow extends React.Component {
 				dataRowContent = (
 					<Row
 						className={rowClass}
-						onMouseEnter={(event) => this.toggleActions(event)}
-						onMouseLeave={(event) => this.toggleActions(event)}
+						onMouseEnter={(event) => this.toggleActions(true)}
+						onMouseLeave={(event) => this.toggleActions(false)}
 					>
 						<FormView
 							type="edit"
@@ -187,8 +187,8 @@ class DataRow extends React.Component {
 				dataRowContent = (
 					<Row
 						className={rowClass}
-						onMouseEnter={(event) => this.toggleActions(event)}
-						onMouseLeave={(event) => this.toggleActions(event)}
+						onMouseEnter={(event) => this.toggleActions(true)}
+						onMouseLeave={(event) => this.toggleActions(false)}
 					>
 						{/** Creating each data chunk per item row */}
 						{this.setDataChunk()}
@@ -198,6 +198,7 @@ class DataRow extends React.Component {
 							<DataRowActions
 								onDeletingItem={this.onDeletingItem}
 								onEditingItem={this.onEditingItem}
+								onToggleActions={this.toggleActions}
 								type={this.state.dataRowtype}
 							/>
 						) : null}

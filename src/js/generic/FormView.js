@@ -61,7 +61,7 @@ class FormView extends React.Component {
 					key={`field-${index}`}
 					formFieldSetUp={field}
 					formType={this.props.type}
-					onChange={this.handleChange}
+					onChange={this.onFormFieldChange}
 					inLineOrientation={this.state.inLineOrientation}
 				/>
 			);
@@ -94,11 +94,11 @@ class FormView extends React.Component {
 	};
 
 	/**
-	 * handleChange function
+	 * onFormFieldChange function
 	 * Event handler when input control changes
 	 * @param {object} event - the DOM element that triggered the event
 	 */
-	handleChange = (event) => {
+	onFormFieldChange = (event) => {
 		this.setState((prevState) => ({
 			dataMap: {
 				...prevState.dataMap,
@@ -117,9 +117,9 @@ class FormView extends React.Component {
 				noValidate
 				validated={this.state.formValidated}
 				onSubmit={this.onSubmitForm}
-				className={this.state.inLineOrientation ? "form-inline" : null}
+				className={this.state.inLineOrientation ? "form-inline w-100" : null}
 			>
-				<Container>
+				<Container class="w-100">
 					{/** Form fields content */}
 					{this.setFormContent()}
 

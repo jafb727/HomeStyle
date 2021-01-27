@@ -80,7 +80,10 @@ class DataRowActions extends React.Component {
 					<Button
 						class="btn-light mr-3"
 						name="No"
-						onClick={() => this.onHandleModal(false)}
+						onClick={() => {
+							this.onHandleModal(false);
+							this.props.onToggleActions(false);
+						}}
 					/>
 					<Button
 						class="btn-primary"
@@ -170,7 +173,7 @@ class DataRowActions extends React.Component {
 						</Container>
 						<Container
 							name="delete-actions"
-							onClick={this.onClickDeletingAction}
+							onClick={() => this.onClickDeletingAction()}
 						>
 							<img alt="Delete item" src={DeleteIcon} />
 						</Container>

@@ -46,17 +46,16 @@ class DataTable extends React.Component {
 		};
 	}
 
-
 	// ----------------------------------------------------------------
 
 	/** Lifecycle methods */
 
 	// componentDidMount
-	componentDidMount(){
+	componentDidMount() {
 		this.setState({
 			anItemWasDeleted: false,
 		});
-	};
+	}
 
 	// ----------------------------------------------------------------
 
@@ -197,6 +196,10 @@ class DataTable extends React.Component {
 
 					{/** DataTable body */}
 					<div className="table-body container-fluid">
+						{/** New editable row */}
+						{this.state.edition.displayNewRow ? this.setUpNewItemRow() : null}
+
+						{/** Displaying rows */}
 						{this.state.dataSource.map((item, index) => (
 							<DataRow
 								type="view"
@@ -209,9 +212,6 @@ class DataTable extends React.Component {
 								dataSource={this.state.dataSource}
 							/>
 						))}
-
-						{/** New editable row */}
-						{this.state.edition.displayNewRow ? this.setUpNewItemRow() : null}
 					</div>
 				</div>
 			</Container>

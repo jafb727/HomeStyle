@@ -27,11 +27,28 @@ class FormView extends React.Component {
 		// Component state
 		this.state = {
 			formValidated: false, // Form validation flag
-			dataMap: util.mapDataForm(this.props.scheme, this.props.orientation), // Fields to display in form
+			dataMap: util.mapDataForm(
+				this.props.scheme,
+				this.props.orientation,
+				this.props.dataSource
+			), // Fields to display in form
 			inLineOrientation: this.props.inLineOrientation,
 			dataSource: this.props.dataSource,
 		};
 	}
+
+	// ----------------------------------------------------------------
+	/** Lifecycle methods */
+
+	// componentDidMount
+	componentDidMount() {
+		// This piece of code updates the data map when the form view is a row in a DataTable component
+		if (this.props.setDataRowFormMap) {
+			this.props.setDataRowFormMap(this.state.dataMap);
+		}
+	}
+
+	// ----------------------------------------------------------------
 
 	/**
 	 * setFormContent function
@@ -105,6 +122,13 @@ class FormView extends React.Component {
 				[event.target.name]: event.target.value,
 			},
 		}));
+
+		// This piece of code updates the data map when the form view is a row in a DataTable component
+		if (this.props.setDataRowFormMap) {
+			const dataMap = this.state.dataMap;
+			dataMap[event.target.name] = event.target.value;
+			this.props.setDataRowFormMap(dataMap);
+		}
 	};
 
 	// ----------------------------------------------------------------

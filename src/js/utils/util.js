@@ -48,9 +48,7 @@ export default (() => {
 		 * @param {boolean} inLineOrientation - the form orientation (table or default)
 		 */
 		setBS4ColWidth: (bs4ColumnWidth, inLineOrientation) => {
-			return bs4ColumnWidth && inLineOrientation
-				? `col-${bs4ColumnWidth}`
-				: "";
+			return bs4ColumnWidth && inLineOrientation ? `col-${bs4ColumnWidth}` : "";
 		},
 
 		/**
@@ -66,19 +64,22 @@ export default (() => {
 		 * Helps to set only the key name for each field to be displayed in a form given a data scheme
 		 * @param {object} scheme - the data scheme to extract the form data map
 		 * @param {string} orientation - the form orientation
+		 * @param {object} dataSource - the data of the field if exists
 		 * @returns {object} A mapped fields scheme
 		 */
-		mapDataForm: (scheme, orientation) => {
+		mapDataForm: (scheme, orientation, dataSource) => {
 			let dataForm = {};
 
 			// Getting keynames from data scheme
 			scheme.forEach((formFieldSetUp) => {
-				if (
+				/*if (
 					(orientation !== "table" && formFieldSetUp.displayEditForm) ||
 					(orientation === "table" && formFieldSetUp.displayViewList)
-				) {
-					dataForm[formFieldSetUp.name] = "";
-				}
+				) {*/
+				dataForm[formFieldSetUp.name] = dataSource
+					? dataSource[formFieldSetUp.name]
+					: "";
+				//}
 			});
 
 			return dataForm;
@@ -176,23 +177,50 @@ export default (() => {
 
 		/**
 		 * addItem function
-		 * Adds an item local storage
+		 * Adds an item to the local storage
 		 * @param {string} key - key entry in local storage
-		 * @param {object} data - A JSON object with all form data mapped
+		 * @param {object} dataMap - A JSON object with all form data mapped
 		 * @returns {object} A JSON object
 		 */
-		addItem: (key, data) => {
+		addItem: (key, dataMap) => {
 			// Defining new random id for item
 			const itemId = util.getRandomInt(20, 100);
-			data["productId"] = itemId;
+			dataMap["productId"] = itemId;
 
 			// Getting local storage to add new item
 			let items = util.getLocalStorageEntry(key);
-			items.push(data);
+			items.push(dataMap);
 
 			// Adding data to local storage and returning success
 			window.localStorage.setItem("items", JSON.stringify(items));
 			return { status: 200, success: true };
+		},
+
+		/**
+		 * updateItem function
+		 * Updates an item in the local storage
+		 * @param {string} key - key entry in local storage
+		 * @param {object} dataMap - A JSON object with all form data mapped including the id
+		 * @returns {object} A JSON object
+		 */
+		updateItem: (key, dataMap) => {
+			// Getting local storage to add new item
+			const items = JSON.parse(util.getLocalStorageEntry(key));
+			let itemToUpdate = items.filter(
+				(item) => item.productId === dataMap.productId
+			);
+
+			let result = null;
+
+			for (let key of dataMap) {
+				result[key] = dataMap[key];
+			}
+
+			result = dataMap.map((key, index) => (itemToUpdate[key] = key[index]));
+
+			// Adding data to local storage and returning success
+			//window.localStorage.setItem("items", JSON.stringify(items));
+			//return { status: 200, success: true };
 		},
 
 		/**

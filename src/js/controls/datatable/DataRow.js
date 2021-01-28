@@ -27,8 +27,9 @@ class DataRow extends React.Component {
 		this.state = {
 			displayActions: false, // Flag to handle actions displaying
 			dataRowSource: this.props.item, // The source which the data row will be filled
-			dataRowtype: this.props.type, // the type of the data row
+			dataRowType: this.props.type, // the type of the data row
 			isBeingEdited: false, // If the row is being edited
+			dataRowFormMap: [], // Holds the updated inserted data when the data row converts into a form
 		};
 	}
 
@@ -48,8 +49,20 @@ class DataRow extends React.Component {
 	// ----------------------------------------------------------------
 
 	/**
+	 * setDataRowFormMap function
+	 * Sets the value for the dataRowFormMap to use it in the DataRowActions component
+	 * @param {object} dataMap - the dataMap collected by the form view events
+	 */
+	setDataRowFormMap = (dataMap) => {
+		this.setState({
+			dataRowFormMap: dataMap,
+		});
+	};
+
+	/**
 	 * toggleActions function
 	 * Helps to handle the item actions display
+	 * @param {boolean} state - the state to set in displayActions flag
 	 */
 	toggleActions = (state) => {
 		this.setState({
@@ -74,18 +87,47 @@ class DataRow extends React.Component {
 	};
 
 	/**
-	 * onAddingNewItem function
+	 * onSavingItem function
 	 * Defines a custom submit function for the new item action
-	 * @param {object} formState - the form state containing all data and properties
+	 * @param {string} savingType - the saving type to apply a different saving logic
 	 */
-	onAddingNewItem = (formState) => {
-		// Adding item to local storage
-		const result = util.addItem("items", formState.initialDataMap);
+	onSavingItem = (savingType) => {
+		let processedDataSource = null;
+		const dataMap = this.state.dataRowFormMap;
 
-		if (result.success) {
-			// Updates global app data
-			this.props.updateAppData();
+		switch (savingType) {
+			case "new":
+				// Defining new random id for item
+				const itemId = util.getRandomInt(20, 100);
+				dataMap["productId"] = itemId;
+
+				processedDataSource = this.props.dataSource;
+				processedDataSource.push(dataMap);
+
+				this.props.onSettingNewRowVisibility(false);
+				break;
+
+			case "edit":
+			default:
+				processedDataSource = this.props.dataSource.map((item) => {
+					if (item.productId === dataMap.productId) {
+						for (let key of Object.keys(dataMap)) {
+							item[key] = dataMap[key];
+						}
+					}
+					return item;
+				});
+
+				// Returning edit row to view mode
+				this.setState({
+					isBeingEdited: false,
+					dataRowType: "view",
+				});
+				break;
 		}
+
+		// Updating datatable data source
+		this.props.onUpdateDataSource(processedDataSource, false);
 	};
 
 	/**
@@ -95,7 +137,7 @@ class DataRow extends React.Component {
 	 */
 	onEditingItem = (dataRowType) => {
 		this.setState({
-			dataRowtype: dataRowType,
+			dataRowType: dataRowType,
 			isBeingEdited: dataRowType === "edit" ? true : false,
 		});
 	};
@@ -131,35 +173,40 @@ class DataRow extends React.Component {
 		// Create row based on type
 		switch (true) {
 			// Data row new type
-			case this.state.dataRowtype === "new":
+			case this.state.dataRowType === "new":
 				dataRowContent = (
 					<Row
 						className={rowClass}
-						onMouseEnter={(event) => this.toggleActions(true)}
-						onMouseLeave={(event) => this.toggleActions(false)}
+						onMouseEnter={() => this.toggleActions(true)}
+						onMouseLeave={() => this.toggleActions(false)}
 					>
 						<FormView
 							type="new"
 							scheme={this.props.scheme}
-							onSubmit={this.onAddingNewItem}
+							onSubmit={this.onSavingItem}
 							inLineOrientation={true}
+							setDataRowFormMap={this.setDataRowFormMap}
 						/>
 
 						{/** Item actions */}
 						{this.state.displayActions ? (
-							<DataRowActions onDeletingItem={this.onDeletingItem} type="new" />
+							<DataRowActions
+								onDeletingItem={this.onDeletingItem}
+								onSavingItem={this.onSavingItem}
+								type="new"
+							/>
 						) : null}
 					</Row>
 				);
 				break;
 
 			// Data row edit type
-			case this.state.dataRowtype === "edit" || this.state.isBeingEdited:
+			case this.state.dataRowType === "edit" || this.state.isBeingEdited:
 				dataRowContent = (
 					<Row
 						className={rowClass}
-						onMouseEnter={(event) => this.toggleActions(true)}
-						onMouseLeave={(event) => this.toggleActions(false)}
+						onMouseEnter={() => this.toggleActions(true)}
+						onMouseLeave={() => this.toggleActions(false)}
 					>
 						<FormView
 							type="edit"
@@ -167,6 +214,7 @@ class DataRow extends React.Component {
 							onSubmit={this.onEditingItem}
 							inLineOrientation={true}
 							dataSource={this.state.dataRowSource}
+							setDataRowFormMap={this.setDataRowFormMap}
 						/>
 
 						{/** Item actions */}
@@ -174,7 +222,8 @@ class DataRow extends React.Component {
 							<DataRowActions
 								onDeletingItem={this.onDeletingItem}
 								onEditingItem={this.onEditingItem}
-								type={this.state.dataRowtype}
+								onSavingItem={this.onSavingItem}
+								type={this.state.dataRowType}
 							/>
 						) : null}
 					</Row>
@@ -182,13 +231,13 @@ class DataRow extends React.Component {
 				break;
 
 			// Data row view type
-			case this.state.dataRowtype === "view":
+			case this.state.dataRowType === "view":
 			default:
 				dataRowContent = (
 					<Row
 						className={rowClass}
-						onMouseEnter={(event) => this.toggleActions(true)}
-						onMouseLeave={(event) => this.toggleActions(false)}
+						onMouseEnter={() => this.toggleActions(true)}
+						onMouseLeave={() => this.toggleActions(false)}
 					>
 						{/** Creating each data chunk per item row */}
 						{this.setDataChunk()}
@@ -199,7 +248,7 @@ class DataRow extends React.Component {
 								onDeletingItem={this.onDeletingItem}
 								onEditingItem={this.onEditingItem}
 								onToggleActions={this.toggleActions}
-								type={this.state.dataRowtype}
+								type={this.state.dataRowType}
 							/>
 						) : null}
 					</Row>

@@ -50,11 +50,11 @@ class DataRowActions extends React.Component {
 	/** Functions */
 
 	/**
-	 * onHandleModal function
+	 * handleModal function
 	 * Helps to handle modal displaying
 	 * @param {boolean} state - the state to set for modal displaying
 	 */
-	onHandleModal = (state) => {
+	handleModal = (state) => {
 		this.setState({ displayModal: state });
 	};
 
@@ -81,7 +81,7 @@ class DataRowActions extends React.Component {
 						class="btn-light mr-3"
 						name="No"
 						onClick={() => {
-							this.onHandleModal(false);
+							this.handleModal(false);
 							this.props.onToggleActions(false);
 						}}
 					/>
@@ -107,12 +107,12 @@ class DataRowActions extends React.Component {
 				break;
 
 			case "deleteConfirmation":
-				this.onHandleModal(false);
+				this.handleModal(false);
 				this.props.onDeletingItem();
 				break;
 
 			default:
-				this.onHandleModal(true);
+				this.handleModal(true);
 				break;
 		}
 	};
@@ -130,7 +130,7 @@ class DataRowActions extends React.Component {
 			case "new":
 				dataRowActionsContent = (
 					<Container class="edit-actions" name="data-row-actions">
-						<Container name="save-actions">
+						<Container name="save-actions" onClick={() => this.props.onSavingItem("new")}>
 							<img alt="Save item" src={SaveIcon} />
 						</Container>
 						<Container
@@ -147,7 +147,7 @@ class DataRowActions extends React.Component {
 			case "edit":
 				dataRowActionsContent = (
 					<Container class="edit-actions" name="data-row-actions">
-						<Container name="save-actions">
+						<Container name="save-actions" onClick={() => this.props.onSavingItem("edit")}>
 							<img alt="Save item" src={SaveIcon} />
 						</Container>
 						<Container

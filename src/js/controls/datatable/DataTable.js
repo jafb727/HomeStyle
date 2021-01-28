@@ -52,6 +52,7 @@ class DataTable extends React.Component {
 
 	// componentDidMount
 	componentDidMount() {
+		// Resets this state to not interfere with search box results
 		this.setState({
 			anItemWasDeleted: false,
 		});
@@ -92,13 +93,13 @@ class DataTable extends React.Component {
 	/**
 	 * onUpdateDataSource function
 	 * Helps to update the data source once invoked
-	 * @param {object} filteredData - the filtered data to present in app
+	 * @param {object} processedData - the processed data to present in app
 	 * @param {boolean} anItemWasDeleted - indicates if the data source updating was performed by a deletion action
 	 *
 	 */
-	onUpdateDataSource = (filteredData, anItemWasDeleted) => {
+	onUpdateDataSource = (processedData, anItemWasDeleted) => {
 		this.setState({
-			dataSource: filteredData,
+			dataSource: processedData,
 			anItemWasDeleted: anItemWasDeleted,
 		});
 	};
@@ -113,21 +114,6 @@ class DataTable extends React.Component {
 	};
 
 	/**
-	 * updateAppData function
-	 * Helps to update the data source once invoked
-	 */
-	updateAppData = () => {
-		// Getting local storage entry that where supposedly updated
-		const updatedStorage = util.getLocalStorageEntry("items");
-
-		// Updating global data used in app
-		this.setState((prevState) => ({
-			...prevState,
-			dataSource: updatedStorage,
-		}));
-	};
-
-	/**
 	 * setUpNewItemRow function
 	 * Sets up a new editable row in the table to enable user to create a new item
 	 * @returns {object} Header markup
@@ -137,18 +123,12 @@ class DataTable extends React.Component {
 			<DataRow
 				type="new"
 				scheme={this.state.scheme}
-				updateAppData={this.updateAppData}
+                    dataSource={this.state.dataSource}
+				onUpdateDataSource={this.onUpdateDataSource}
 				onSettingNewRowVisibility={this.onSettingNewRowVisibility}
 			/>
 		);
 	};
-
-	/**
-	 * onDeletingRow function
-	 * Sets up a new editable row in the table to enable user to create a new item
-	 * @returns {object} Header markup
-	 */
-	onDeletingRow = () => {};
 
 	// ----------------------------------------------------------------
 
